@@ -1,0 +1,23 @@
+###Programme qui imprime une phrase
+
+#include <stdio.h>
+
+int main(int argc, char **argv) {
+
+	printf("je suis Exo07 et je suis appelé par execve\n");
+	return 0;
+}
+
+### Programme qui execute le programme d'avant
+
+#include<unistd.h>
+#include<sys/types.h>
+#include<sys/wait.h> 
+
+int main(int argc, char **argv) {
+	execve("/home/villebon/Bureau/Exo7", NULL, NULL); 
+	return 0;
+}
+
+
+
