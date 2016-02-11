@@ -16,7 +16,7 @@ int main(int argc, char **argv) {
 	case -1: break;
 	case 0 :	
 		printf("PID : %d, PPID : %d \n", getpid(), getppid());
-		for (n=0; n<51; n++) {
+		for (n=1; n<50; n++) {
 			printf("%d \n", n);
 		}
 		sleep(15);
