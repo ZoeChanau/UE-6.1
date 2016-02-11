@@ -1,4 +1,5 @@
-##Programme qui affiche son PID, qui crée un fils qui achiffe les entiers de 1 à 50 et qui affiche son PID ainsi que celui de son père.
+##Programme qui affiche son PID, qui crée un fils qui achiffe les entiers 
+de 1 à 50 et qui affiche son PID ainsi que celui de son père.
 
 #include <stdio.h>
 #include <unistd.h>
