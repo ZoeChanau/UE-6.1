@@ -1,0 +1,29 @@
+##Programme qui affiche son PID, qui crée un fils qui achiffe les entiers de 1 à 50 et qui affiche son PID ainsi que celui de son père.
+
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/types.h>
+
+int main(int argc, char **argv) {
+	pid_t pid;
+	int n;
+	int status;
+	
+	pid = fork();
+
+	switch(pid) {
+	case -1: break;
+	case 0 :	
+		printf("PID : %d, PPID : %d \n", getpid(), getppid());
+		for (n=0; n<51; n++) {
+			printf("%d \n", n);
+		}
+		sleep(15);
+		break;
+	default :
+		printf("PID pere : %d \n", getpid());
+		wait(&status);
+	}
+
+return 0;
+}
