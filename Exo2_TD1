@@ -1,0 +1,54 @@
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <stdlib.h>
+
+int main(int argc, char **argv) {
+	pid_t pid;
+	pid_t pid2;
+	int n;
+	int status;
+	int status2;
+	
+	pid = fork();
+	
+
+	switch(pid) {
+	if (pid2 == -1) {
+			exit(-1);
+		}
+	if (pid2 == 0){	
+		printf("PID : %d, PPID : %d \n", getpid(), getppid());
+		for (n=1; n<51; n++) {
+			printf("%d \n", n);
+		}
+		 return 0;
+	}
+	else {
+		printf("PID pere : %d \n", getpid());
+		pid2 = fork();
+
+		if (pid2 == 0){
+		printf("PID : %d, PPID : %d \n", getpid(), getppid());
+			for (n=51; n<101; n++) {
+				printf("%d \n", n);
+			return 0;
+			}
+			
+		}
+		if (pid2 == -1) {
+			exit(-1);
+		}
+		else {	
+			printf("PID pere : %d \n", getpid());
+			wait(&status);
+		}
+
+	
+		
+	}
+	}
+
+return 0;
+}
