@@ -14,6 +14,7 @@ int main(int argc, char*argv){
 	int ret = pthread_create(&monThread, NULL, maFonction, NULL);
 	if(-1==ret)printf("Echec/n");
 	else printf("Succes\n");
+	/*Pour synchroniser le pthread avec le processus*/
 	pthread_join(monThread,NULL);
 	return 0;
 }
