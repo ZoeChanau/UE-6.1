@@ -1,0 +1,19 @@
+#include<stdio.h>
+#include<pthread.h>
+
+void* maFonction(void*arg){
+	printf("Dans le thread\n");
+	/*Pour enlever le warning*/
+	(void)arg;
+	pthread_exit(NULL);
+}
+
+int main(int argc, char*argv){
+	printf("Dans le main:\n");
+	pthread_t monThread;
+	int ret = pthread_create(&monThread, NULL, maFonction, NULL);
+	if(-1==ret)printf("Echec/n");
+	else printf("Succes\n");
+	pthread_join(monThread,NULL);
+	return 0;
+}
