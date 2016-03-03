@@ -10,7 +10,7 @@ int main(void) {
 	int status; //Pour le wait
 
 	char msg[SIZE];
-	pipe(tubedesc);
+	pipe(tubedesc); // Créer tube avant le processus
 
 	pid = fork();
 
