@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <stdlib.h>
+
+#define SIZE 256
+
+int main(void) {
+	pid_t pid;
+	int tubedesc[2];
+	int status; //Pour le wait
+
+	char msg[SIZE];
+	pipe(tubedesc);
+
+	pid = fork();
+
+	
+	if (pid != 0) {//Pere
+		close(tubedesc[0]); 
+		while( write(tubedesc[1], msg, read(STDIN_FILENO, msg, SIZE)));
+		close(tubedesc[1]);
+		wait(&status);
+		}
+	else{	
+		close(tubedesc[1]);
+		int n;
+		while(n=read(tubedesc[0], msg, SIZE));
+			write(STDOUT_FILENO, "fils: ", 7);
+			write(STDOUT_FILENO, msg, n);
+		close(tubedesc[0]);
+		printf("Message reçu =\"%s\" \n", msg);
+		}
+	return 0;
+}
