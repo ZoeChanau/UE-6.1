@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/types.h>
+
+#define SIZE 256
+
+int main(void) {
+	pid_t pid;
+	int tubedesc[2];
+	int status; //Pour le wait
+
+	char msg[SIZE];
+	pipe(tubedesc);
+
+	pid = fork();
+
+	
+	if (pid != 0) {//Pere
+		sprintf(msg, "Bonjour, je suis ton père !");
+		close(tubedesc[0]); 
+		write(tubedesc[1], msg, SIZE);//On rentre 1 nombre de caractère en plus
+		close(tubedesc[1]);
+		}
+	else{	
+		close(tubedesc[1]);
+		read(tubedesc[0], msg, SIZE);
+		close(tubedesc[0]);
+		printf("Message reçu =\"%s\" \n", msg);
+		return 0;
+		}
+		return 0;
+}
