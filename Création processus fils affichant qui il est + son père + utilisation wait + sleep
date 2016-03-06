@@ -1,1 +1,24 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 
+int main(void){
+  pid_t pid;
+  int status;
+  
+  pid = fork();
+  
+  switch(pid) {
+    case -1 : 
+      break;
+    case 0 : //fils
+      printf ("Je suis le fils et mon pid est : %ld \nMon ppid est : %ld", getpid(), getppid());
+      sleep(15);
+    break;
+      printf ("Je suis le père et mon pid est : %ld \nMon ppid est :%ld", getpid(), getppid());
+      wait(&status);
+  }
+  return 0;
+}
+    
