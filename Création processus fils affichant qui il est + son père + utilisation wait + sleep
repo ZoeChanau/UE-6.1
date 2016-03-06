@@ -17,7 +17,7 @@ int main(void){
       sleep(15);
     break;
       printf ("Je suis le père et mon pid est : %ld \nMon ppid est :%ld", getpid(), getppid());
-      wait(&status);
+      wait(&status); //Attend que le processus fils se termine
   }
   return 0;
 }
