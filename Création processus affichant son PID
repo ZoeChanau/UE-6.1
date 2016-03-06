@@ -5,8 +5,10 @@
 int main(void){
   pid_t pid;
   
+  while (1) {
   pid = fork();
   printf("Le pid est : %ld\n", pid);
+  }
   return 0;
 }
   
