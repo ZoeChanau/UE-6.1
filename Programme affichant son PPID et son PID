@@ -1,0 +1,16 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void){
+  pid_t pid;
+  pid_t ppid;
+  
+  pid = getpid();
+  ppid=getppid();
+  printf("le PID est : %ld \n", pid);
+  printf("le PPID est : %ld \n", ppid);
+  
+  while(1){
+  } //Pour visualiser le processus dans les premières lignes de la commande top 
+  return 0;
+}
