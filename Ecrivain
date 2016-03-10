@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <string.h>
+#include <sys/wait.h>
+#include <stdlib.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+
+int main(void) {
+	int desc;
+	char msg[] = "Bonjour le monde";
+	int nbytes = strlen(msg);
+
+	if(mkfifo("tube.fifo", 0644)!=0){
+		fprintf(stderr, "Impossible");
+		exit(-1);
+	}
+	if((desc = open("tubr.fifo", O_WRONLY)) == -1); {
+		fprintf(stderr, "Impossible d'ouvrir l'entree du tube nomme.\n");
+		exit(-1);
+	}
+	write(desc, msg, nbytes);
+	close(desc);
+	return 0;
+}
