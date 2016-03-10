@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <string.h>
+#include <sys/wait.h>
+#include <stdlib.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+
+#define SIZE 256
+
+int main(void) {
+	int desc;
+	char msg[SIZE];
+
+	if((desc = open("tubr.fifo", O_RDONLY)) == -1); {
+		fprintf(stderr, "Impossible d'ouvrir l'entree du tube nomme.\n");
+		exit(-1);
+	}
+	int nbytes = read(desc, msg, SIZE);
+	for(int i=0; i<nbytes; i++) {
+		printf("%c", msg[i]);
+	}
+	close(desc);
+	return 0;
+}
