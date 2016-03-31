@@ -1,0 +1,8 @@
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+
+int main(void) {
+	creat("/tmp/guest-XCKXFM/Bureau/Fichier.txt", 0644);
+	return 0;
+}
